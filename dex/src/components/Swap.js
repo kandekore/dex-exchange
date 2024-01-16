@@ -15,6 +15,7 @@ function Swap() {
   const [tokenTwo, setTokenTwo] = useState(tokenList[1]);
   const [isOpen, setIsOpen] = useState(false);
   const [changeToken, setChangeToken] = useState(1);
+  const [prices, setPrices] = useState(null);
 
   function handleSlippageChange(e) {
     setSlippage(e.target.value);
@@ -36,7 +37,19 @@ function Swap() {
     setChangeToken(asset);
     setIsOpen(true);
   }
-
+  function modifyToken(i) {
+    // setPrices(null);
+    // setTokenOneAmount(null);
+    // setTokenTwoAmount(null);
+    if (changeToken === 1) {
+      setTokenOne(tokenList[i]);
+      //  fetchPrices(tokenList[i].address, tokenTwo.address);
+    } else {
+      setTokenTwo(tokenList[i]);
+      // fetchPrices(tokenOne.address, tokenList[i].address);
+    }
+    setIsOpen(false);
+  }
   const settings = (
     <>
       <div>Slippage Tolerance</div>
@@ -56,7 +69,25 @@ function Swap() {
         footer={null}
         onCancel={() => setIsOpen(false)}
         title="Select a token"
-      ></Modal>
+      >
+        <div className="modalContent">
+          {tokenList?.map((e, i) => {
+            return (
+              <div
+                className="tokenChoice"
+                key={i}
+                onClick={() => modifyToken(i)}
+              >
+                <img src={e.img} alt={e.ticker} className="tokenLogo" />
+                <div className="tokenChoiceNames">
+                  <div className="tokenName">{e.name}</div>
+                  <div className="tokenTicker">{e.ticker}</div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </Modal>
       <div className="tradeBox">
         <div className="tradeBoxHeader">
           <h4>Swap</h4>
@@ -96,6 +127,16 @@ function Swap() {
             {tokenTwo.ticker}
             <DownOutlined />
           </div>
+        </div>
+        <div
+          className="swapButton"
+          disabled={
+            !tokenOneAmount
+            //|| !isConnected
+          }
+          // onClick={fetchDexSwap}
+        >
+          Swap
         </div>
       </div>
     </>
