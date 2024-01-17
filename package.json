@@ -4,9 +4,8 @@
     "description": "Decentralized Exchange",
     "main": "dexBack/index.js",
     "scripts": {
-      "develop": "concurrently \"cd dexBack && node index.js\" \"cd dex && npm run start\"",
-      "start": "node dexBack/index.js --ignore dex",
-      "install": "cd dexBack && npm i && cd ../cliedexnt && npm i",
+      "start": "concurrently \"cd dexBack && node index.js\" \"cd dex && npm run start\"",
+      "install": "cd dexBack && npm i && cd ../cliedexnt && npm i"
     },
     "repository": {
       "type": "git",
@@ -26,6 +25,6 @@
       "cors": "^2.8.5",
       "dotenv": "^16.0.3",
       "express": "^4.18.2",
-      "moralis": "^2.11.1",
+      "moralis": "^2.11.1"
     }
   }
