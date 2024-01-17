@@ -4,6 +4,8 @@
     "description": "Decentralized Exchange",
     "main": "dexBack/index.js",
     "scripts": {
+        "install:dex": "cd dex && npm install",
+        "install:dexBack": "cd dexBack && npm install",
         "develop": "concurrently \"cd dexBack && node index.js\" \"cd dex && npm run start\"",
         "start": "node dexBack/index.js",
         "build:dex": "cd dex && npm run build",
