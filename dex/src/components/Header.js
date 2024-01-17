@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../moralis-logo.svg";
+import Logo from "../altexc.png";
 import Eth from "../eth.svg";
 import { Link } from "react-router-dom";
 
@@ -23,7 +23,9 @@ function Header(props) {
           Ethereum
         </div>
         <div className="connectButton" onClick={connect}>
-          Connect
+          {isConnected
+            ? address.slice(0, 4) + "..." + address.slice(38)
+            : "Connect"}
         </div>
       </div>
     </header>
