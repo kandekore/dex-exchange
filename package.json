@@ -1,0 +1,15 @@
+{
+    "name": "root-project",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+      "install:dex": "cd dex && npm install",
+      "build:dex": "cd dex && npm run build",
+      "start:dex": "cd dex && npm start", 
+      "test:dex": "cd dex && npm test",
+      "install:dexBack": "cd dexBack && npm install",
+      "start:dexBack": "cd dexBack && node index.js", 
+      "postinstall": "npm run install:dex && npm run install:dexBack"
+    }
+  }
+  
