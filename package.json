@@ -6,7 +6,7 @@
     "scripts": {
       "develop": "concurrently \"cd dexBack && node index.js\" \"cd dex && npm run start\"",
       "start": "node dexBack/index.js --ignore dex",
-      "install": "cd dexBack && npm i && cd ../cliedexnt && npm i"
+      "install": "cd dexBack && npm i && cd ../dex && npm i"
     },
     "repository": {
       "type": "git",
