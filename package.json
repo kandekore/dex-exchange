@@ -3,12 +3,12 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
-      "install:dex": "cd dex && npm install",
-      "build:dex": "cd dex && npm run build",
-      "start:dex": "cd dex && npm run start", 
-      "test:dex": "cd dex && npm test",
-      "install:dexBack": "cd dexBack && npm install",
-      "start:dexBack": "cd dexBack && node index.js", 
+      "install": "cd dex && npm install",
+      "build": "cd dex && npm run build",
+      "start": "cd dex && npm run start", 
+      "test": "cd dex && npm test",
+      "install": "cd dexBack && npm install",
+      "start": "cd dexBack && node index.js", 
       "postinstall": "npm run install:dex && npm run install:dexBack"
     }
   }
