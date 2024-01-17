@@ -6,8 +6,9 @@
     "scripts": {
         "develop": "concurrently \"cd dexBack && node index.js\" \"cd dex && npm run start\"",
         "start": "node dexBack/index.js",
+        "build:dex": "cd dex && npm run build",
         "install": "cd dexBack && npm i && cd ../dex && npm i",
-        "postinstall": "cd dexBack && npm install && cd ../dex && npm install"
+        "postinstall": "npm run install:dex && npm run install:dexBack && npm run build:dex"
     },
     "repository": {
       "type": "git",
