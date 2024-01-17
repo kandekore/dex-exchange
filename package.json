@@ -1,15 +1,31 @@
-{
-    "name": "root-project",
+  {
+    "name": "Dex Exchange",
     "version": "1.0.0",
-    "private": true,
+    "description": "Decentralized Exchange",
+    "main": "dexBack/index.js",
     "scripts": {
-      "install": "cd dex && npm install",
-      "build": "cd dex && npm run build",
-      "start": "cd dex && npm run start", 
-      "test": "cd dex && npm test",
-      "install": "cd dexBack && npm install",
-      "start": "cd dexBack && node index.js", 
-      "postinstall": "npm run install:dex && npm run install:dexBack"
+      "develop": "concurrently \"cd dexBack && node index.js\" \"cd dex && npm run start\"",
+      "start": "node dexBack/index.js --ignore dex",
+      "install": "cd dexBack && npm i && cd ../cliedexnt && npm i",
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/kandekore/dex-exchange"
+    },
+    "keywords": [
+      "e-comerce"
+    ],
+    "author": "D Kandekore",
+    "license": "ISC",
+    "bugs": {
+      "url": " "
+    },
+    "homepage": "https://github.com/kandekore/dex-exchange#readme",
+    "dependencies": {    
+      "concurrently": "^7.6.0",
+      "cors": "^2.8.5",
+      "dotenv": "^16.0.3",
+      "express": "^4.18.2",
+      "moralis": "^2.11.1",
     }
   }
-  
