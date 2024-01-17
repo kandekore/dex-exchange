@@ -5,7 +5,7 @@
     "scripts": {
       "install:dex": "cd dex && npm install",
       "build:dex": "cd dex && npm run build",
-      "start:dex": "cd dex && npm start", 
+      "start:dex": "cd dex && npm run start", 
       "test:dex": "cd dex && npm test",
       "install:dexBack": "cd dexBack && npm install",
       "start:dexBack": "cd dexBack && node index.js", 
