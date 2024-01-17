@@ -4,9 +4,10 @@
     "description": "Decentralized Exchange",
     "main": "dexBack/index.js",
     "scripts": {
-      "develop": "concurrently \"cd dexBack && node index.js\" \"cd dex && npm run start\"",
-      "start": "concurrently \"node dexBack/index.js\" \"cd dex && npm run start\"",
-      "install": "cd dexBack && npm i && cd ../dex && npm i"
+        "develop": "concurrently \"cd dexBack && node index.js\" \"cd dex && npm run start\"",
+        "start": "node dexBack/index.js",
+        "install": "cd dexBack && npm i && cd ../dex && npm i",
+        "postinstall": "cd dexBack && npm install && cd ../dex && npm install"
     },
     "repository": {
       "type": "git",

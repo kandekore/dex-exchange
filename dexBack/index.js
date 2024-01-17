@@ -1,12 +1,21 @@
 const express = require("express");
 const Moralis = require("moralis").default;
 const app = express();
+const path = require('path');
 const cors = require("cors");
 require("dotenv").config();
 const port = process.env.PORT ||  3001;
 
 app.use(cors());
 app.use(express.json());
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, '../dex/build')));
+
+// Handles any requests that don't match the ones above
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../dex/build/index.html'));
+});
 
 app.get("/tokenPrice", async (req, res) => {
 
