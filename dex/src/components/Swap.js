@@ -99,10 +99,10 @@ console.log("Prices Ratio:", prices.ratio);
   // Base URL for the API. Use an environment variable to determine the correct URL.
   const apiUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
 
-  try {
+  
     const res = await axios.get(`${apiUrl}/tokenPrice`, {
       params: { addressOne: one, addressTwo: two }
-    });
+    };
 
    console.log("API Response:", res.data);
 setPrices(res.data);
