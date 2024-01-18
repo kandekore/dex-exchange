@@ -83,7 +83,7 @@ function Swap(props) {
     setIsOpen(false);
   }
 
-  async function fetchPrices(one, two){
+  /*async function fetchPrices(one, two){
 
       const res = await axios.get(`http://localhost:3001/tokenPrice`, {
         params: {addressOne: one, addressTwo: two}
@@ -91,7 +91,22 @@ function Swap(props) {
 
       
       setPrices(res.data)
+  }*/
+  async function fetchPrices(one, two) {
+  // Base URL for the API. Use an environment variable to determine the correct URL.
+  const apiUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
+
+  try {
+    const res = await axios.get(`${apiUrl}/tokenPrice`, {
+      params: { addressOne: one, addressTwo: two }
+    });
+
+    setPrices(res.data);
+  } catch (error) {
+    // Handle error here. For example, log it or show a message to the user.
+    console.error("Error fetching prices:", error);
   }
+}
 
   async function fetchDexSwap(){
 
