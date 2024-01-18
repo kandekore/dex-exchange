@@ -45,12 +45,15 @@ function Swap(props) {
   }
 
   function changeAmount(e) {
+       console.log("Token One Amount:", e.target.value);
+console.log("Prices Ratio:", prices.ratio);
     setTokenOneAmount(e.target.value);
     if(e.target.value && prices){
       setTokenTwoAmount((e.target.value * prices.ratio).toFixed(2))
     }else{
       setTokenTwoAmount(null);
     }
+ 
   }
 
   function switchTokens() {
@@ -101,7 +104,9 @@ function Swap(props) {
       params: { addressOne: one, addressTwo: two }
     });
 
-    setPrices(res.data);
+   console.log("API Response:", res.data);
+setPrices(res.data);
+
   } catch (error) {
     // Handle error here. For example, log it or show a message to the user.
     console.error("Error fetching prices:", error);
