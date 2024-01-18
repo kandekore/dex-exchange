@@ -1,3 +1,22 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React, { useState, useEffect } from "react";
 import { Input, Popover, Radio, Modal, message } from "antd";
 import {
@@ -100,9 +119,9 @@ console.log("Prices Ratio:", prices.ratio);
   const apiUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
 
   
-    const res = await axios.get(`${apiUrl}/tokenPrice`, {
+   try{ const res = await axios.get(`${apiUrl}/tokenPrice`, {
       params: { addressOne: one, addressTwo: two }
-    };
+    }};
 
    console.log("API Response:", res.data);
 setPrices(res.data);
