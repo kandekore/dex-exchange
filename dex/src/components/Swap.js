@@ -95,23 +95,20 @@ console.log("Prices Ratio:", prices.ratio);
       
       setPrices(res.data)
   }*/
-  async function fetchPrices(one, two) {
+async function fetchPrices(one, two) {
   // Base URL for the API. Use an environment variable to determine the correct URL.
   const apiUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
 
-  
-  const res = await axios.get(`${apiUrl}/tokenPrice`, {
+ 
+    const res = await axios.get(`${apiUrl}/tokenPrice`, {
       params: { addressOne: one, addressTwo: two }
     });
 
-   console.log("API Response:", res.data);
-setPrices(res.data);
+    setPrices(res.data);
 
-  } catch (error) {
-    // Handle error here. For example, log it or show a message to the user.
-    console.error("Error fetching prices:", error);
-  }
 }
+
+
 
   async function fetchDexSwap(){
 
