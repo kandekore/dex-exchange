@@ -45,15 +45,12 @@ function Swap(props) {
   }
 
   function changeAmount(e) {
-       console.log("Token One Amount:", e.target.value);
-console.log("Prices Ratio:", prices.ratio);
     setTokenOneAmount(e.target.value);
     if(e.target.value && prices){
       setTokenTwoAmount((e.target.value * prices.ratio).toFixed(2))
     }else{
       setTokenTwoAmount(null);
     }
- 
   }
 
   function switchTokens() {
@@ -86,29 +83,18 @@ console.log("Prices Ratio:", prices.ratio);
     setIsOpen(false);
   }
 
-  /*async function fetchPrices(one, two){
-
-      const res = await axios.get(`http://localhost:3001/tokenPrice`, {
-        params: {addressOne: one, addressTwo: two}
-      })
-
-      
-      setPrices(res.data)
-  }*/
-async function fetchPrices(one, two) {
-  // Base URL for the API. Use an environment variable to determine the correct URL.
-  const apiUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
-
- 
-    const res = await axios.get(`${apiUrl}/tokenPrice`, {
-      params: { addressOne: one, addressTwo: two }
-    });
-
-    setPrices(res.data);
-
-}
-
-
+  async function fetchPrices(one, two) {
+    // Base URL for the API. Use an environment variable to determine the correct URL.
+    const apiUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
+  
+   
+      const res = await axios.get(`${apiUrl}/tokenPrice`, {
+        params: { addressOne: one, addressTwo: two }
+      });
+  
+      setPrices(res.data);
+  
+  }
 
   async function fetchDexSwap(){
 
