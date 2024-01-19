@@ -33,6 +33,27 @@ app.get("/tokenPrice", async (req, res) => {
   return res.status(200).json(usdPrices);
 });
 
+app.get("/api/approve/allowance", async (req, res) => {
+  try {
+    const { tokenAddress, walletAddress } = req.query;
+    const response = await axios.get(`https://api.1inch.io/v5.0/1/approve/allowance?tokenAddress=${tokenAddress}&walletAddress=${walletAddress}`);
+    res.json(response.data);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching data from 1inch API', details: error.message });
+  }
+});
+
+app.get("/api/swap", async (req, res) => {
+  try {
+    const { fromTokenAddress, toTokenAddress, amount, fromAddress, slippage } = req.query;
+    const swapUrl = `https://api.1inch.io/v5.0/1/swap?fromTokenAddress=${fromTokenAddress}&toTokenAddress=${toTokenAddress}&amount=${amount}&fromAddress=${fromAddress}&slippage=${slippage}`;
+    const response = await axios.get(swapUrl);
+    res.json(response.data);
+  } catch (error) {
+    res.status(500).json({ message: 'Error performing swap on 1inch API', details: error.message });
+  }
+});
+
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, '../dex/build')));
