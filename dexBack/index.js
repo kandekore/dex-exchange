@@ -21,8 +21,8 @@ app.get("/tokenPrice", async (req, res) => {
   const responseTwo = await Moralis.EvmApi.token.getTokenPrice({
     address: query.addressTwo
   })
- console.log("response 1" + responseOne);
- onsole.log("response 2" + responseTwo);
+ console.log("response 1" + {responseOne});
+ console.log("response 2" + {responseTwo});
   const usdPrices = {
     tokenOne: responseOne.raw.usdPrice,
     tokenTwo: responseTwo.raw.usdPrice,
