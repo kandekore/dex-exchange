@@ -114,7 +114,7 @@ setPrices(res.data);
   }
 }
 
-  async function fetchDexSwap(){
+  /*async function fetchDexSwap(){
 
     const allowance = await axios.get(`https://api.1inch.io/v5.0/1/approve/allowance?tokenAddress=${tokenOne.address}&walletAddress=${address}`)
   
@@ -137,6 +137,44 @@ setPrices(res.data);
 
     setTxDetails(tx.data.tx);
   
+  }*/
+  async function fetchDexSwap() {
+    try {
+      // Fetch allowance from your backend
+      const allowanceResponse = await axios.get(`https://dexexchange-07eb12adac18.herokuapp.com//api/approve/allowance`, {
+        params: { tokenAddress: tokenOne.address, walletAddress: address }
+      });
+      const allowance = allowanceResponse.data.allowance;
+  
+      // Check if allowance is sufficient
+      if (Number(allowance) === 0) {
+        // Fetch approval transaction data
+        const approveResponse = await axios.get(`https://dexexchange-07eb12adac18.herokuapp.com//api/approve/transaction`, {
+          params: { tokenAddress: tokenOne.address }
+        });
+        setTxDetails(approveResponse.data);
+        return;
+      }
+  
+      // Assuming allowance is sufficient, fetch the swap transaction data from your backend
+      const swapResponse = await axios.get(`https://dexexchange-07eb12adac18.herokuapp.com//api/swap`, {
+        params: {
+          fromTokenAddress: tokenOne.address,
+          toTokenAddress: tokenTwo.address,
+          amount: tokenOneAmount.padEnd(tokenOne.decimals + tokenOneAmount.length, '0'),
+          fromAddress: address,
+          slippage: slippage
+        }
+      });
+      const tx = swapResponse.data; // This holds your transaction data
+  
+      // Use 'tx' for further operations, e.g., submitting the transaction
+      setTxDetails(tx);
+  
+    } catch (error) {
+      console.error("Error in fetchDexSwap:", error);
+      // Handle error appropriately
+    }
   }
 
 
