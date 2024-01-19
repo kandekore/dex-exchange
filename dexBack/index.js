@@ -12,7 +12,7 @@ app.use(express.json());
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, '../dex/build')));
 
-// Handles any requests that don't match the ones above
+// Handles any requests that don't match the ones above /
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../dex/build/index.html'));
 });
@@ -28,7 +28,8 @@ app.get("/tokenPrice", async (req, res) => {
   const responseTwo = await Moralis.EvmApi.token.getTokenPrice({
     address: query.addressTwo
   })
-
+ console.log("response 1" + responseOne);
+ onsole.log("response 2" + responseTwo);
   const usdPrices = {
     tokenOne: responseOne.raw.usdPrice,
     tokenTwo: responseTwo.raw.usdPrice,

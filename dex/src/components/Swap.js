@@ -47,6 +47,7 @@ function Swap(props) {
   function changeAmount(e) {
        console.log("Token One Amount:", e.target.value);
 console.log("Prices Ratio:", prices.ratio);
+console.log("Prices:", prices);
     setTokenOneAmount(e.target.value);
     if(e.target.value && prices){
       setTokenTwoAmount((e.target.value * prices.ratio).toFixed(2))
