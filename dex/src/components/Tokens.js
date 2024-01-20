@@ -5,7 +5,7 @@ import CryptoCurrencyTable from "./CryptoCurrencyTable"
 function Tokens() {
   return (
     <div>Tokens</div>
-    <CryptoCurrencyTable/>
+   
   )
 }
 

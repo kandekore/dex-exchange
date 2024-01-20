@@ -14,7 +14,7 @@ function Header(props) {
           <div className="headerItem">Swap</div>
         </Link>
         <Link to="/tokens" className="link">
-          <div className="headerItem">Tokens</div>
+          <div className="headerItem">Top 100 Tokens</div>
         </Link>
       </div>
       <div className="rightH">
